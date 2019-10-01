@@ -1,35 +1,26 @@
-import React, { useState } from 'react';
-import { FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { FlatList, ScrollView, Button } from 'react-native';
 
 import axios from 'axios';
 
-import CategoryListItem from '../components/CategoryListItem';
+import CategoryList from '../components/CategoryList';
 
 function Home(props) {
 
-  const [categories, setCategories] = useState([]);
-
-  axios({
-    url: 'http://localhost:8080/graphql',
-    method: 'post',
-    headers: { 'Content-Type': 'application/json' },
-    data: {
-      query: `
-        query {
-          categories {
-            title
-          }
-        }
-        `
-    }
-  }).then((result) => {
-    console.log(result.data)
-  }).catch(err => console.log(err));
-
   return (
-    <FlatList>
-    </FlatList>
+    <ScrollView>
+      <CategoryList />
+      <Button onPress={() => props.navigation.navigate('Category', {
+        categoryName: 'abc'
+      })}
+        title='Button'
+      ></Button>
+    </ScrollView>
   )
+}
+
+Home.navigationOptions = {
+  title: 'Home'
 }
 
 export default Home
