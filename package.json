@@ -8,6 +8,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo/vector-icons": "^10.0.5",
+    "@react-native-community/async-storage": "^1.6.2",
     "axios": "^0.19.0",
     "expo": "^35.0.0",
     "react": "16.8.3",
@@ -21,7 +23,8 @@
     "react-navigation-tabs": "^2.5.5"
   },
   "devDependencies": {
-    "babel-preset-expo": "^7.0.0"
+    "babel-preset-expo": "^7.0.0",
+    "reactotron-react-native": "^4.0.2"
   },
   "private": true
 }

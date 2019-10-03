@@ -10,11 +10,6 @@ function Home(props) {
   return (
     <ScrollView>
       <CategoryList />
-      <Button onPress={() => props.navigation.navigate('Category', {
-        categoryName: 'abc'
-      })}
-        title='Button'
-      ></Button>
     </ScrollView>
   )
 }

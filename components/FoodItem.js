@@ -1,13 +1,19 @@
 import React from 'react';
-import { Text, View, Image, ScrollView, StyleSheet } from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity
+} from 'react-native';
 
 import { theme } from '../constants/theme';
 import { image } from '../constants/images';
 
 function FoodItem(props) {
 
-  const { food } = props
-  // console.log(food)
+  const { food, onAddToCart } = props
   return (
     <View style={styles.container}>
       <Image source={{ uri: 'http://via.placeholder.com/640x360' }}
@@ -21,7 +27,9 @@ function FoodItem(props) {
           </View>
         </View>
         <View style={styles.cartRow}>
-          <Image source={image.addToCart} style={styles.addToCart} />
+          <TouchableOpacity onPress={onAddToCart}>
+            <Image source={image.addToCart} style={styles.addToCart} />
+          </TouchableOpacity>
         </View>
       </View>
     </View>

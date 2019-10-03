@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Text, View, FlatList, StyleSheet } from 'react-native';
 
 import axios from 'axios'
 
 import FoodItem from '../components/FoodItem'
+import { CartContext } from '../context/CartContext'
 
 function Category(props) {
 
@@ -12,6 +13,8 @@ function Category(props) {
   const categoryId = navigation.getParam('categoryId')
 
   const [foods, setFoods] = useState([])
+
+  const { cart, addFoodToCart } = useContext(CartContext)
 
   useEffect(() => {
     fetchFood()
@@ -40,10 +43,11 @@ function Category(props) {
     }).catch((err) => console.log(err));
   }
 
+  console.log(cart)
   return (
     <FlatList
       data={foods}
-      renderItem={({ item }) => <FoodItem food={item} />}
+      renderItem={({ item }) => <FoodItem food={item} onAddToCart={() => addFoodToCart(item)} />}
       keyExtractor={item => item._id}
       contentContainerStyle={styles.container}
     />
